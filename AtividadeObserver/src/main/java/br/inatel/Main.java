@@ -19,7 +19,7 @@ public class Main {
         palavraManager.registraObservador(obs2);
         palavraManager.registraObservador(obs3);
 
-        palavraManager.setNovaFrase("hoje ta muito frio");
+        palavraManager.setNovaFrase("Hoje ta muito Frio irado");
 
 
 
