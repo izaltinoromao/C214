@@ -14,6 +14,7 @@ public class Observador implements iObservador {
     public void update(Observavel manager) {
         System.out.println("Cliente: "+this.id);
         System.out.println("Quantidade de palavras: " + manager.getQtdPalavras());
+        System.out.println("Quantidade de palavras pares: " + manager.getQtdPalavrasPares());
     }
 
 }

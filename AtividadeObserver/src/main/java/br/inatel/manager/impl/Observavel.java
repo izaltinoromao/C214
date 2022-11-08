@@ -40,6 +40,7 @@ public class Observavel implements iObservavel {
         System.out.println("Nova palavra adicionada");
         this.frase = frase;
         contaPalavras(this.frase);
+        contaPalavrasCharPar(this.frase);
         novasMedidas();
     }
 
@@ -53,6 +54,18 @@ public class Observavel implements iObservavel {
 
         String[] palavras = s.split(" ");
         qtdPalavras = palavras.length;
+    }
+
+    private void contaPalavrasCharPar(String s){
+        int cont = 0;
+        String[] palavras = s.split(" ");
+        for(int i=0; i < palavras.length; i++){
+            if(palavras[i].length()%2 == 0)
+            {
+                cont++;
+            }
+        }
+        qtdPalavrasPares = cont;
     }
 
     public void setClientes(List<Observador> clientes) {
