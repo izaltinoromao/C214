@@ -8,6 +8,7 @@ import java.util.List;
 public class Observavel implements iObservavel {
 
     private String frase;
+    private String[] palavras;
     private int qtdPalavras;
     private int qtdPalavrasPares;
     private int qtdPalavrasMaiusculas;
@@ -39,9 +40,10 @@ public class Observavel implements iObservavel {
     public void setNovaFrase(String frase) {
         System.out.println("Nova palavra adicionada");
         this.frase = frase;
-        contaPalavras(this.frase);
-        contaPalavrasCharPar(this.frase);
-        contaPalavrasMaiusculas(this.frase);
+        firstSplit(this.frase);
+        contaPalavras();
+        contaPalavrasCharPar();
+        contaPalavrasMaiusculas();
         novasMedidas();
     }
 
@@ -51,35 +53,32 @@ public class Observavel implements iObservavel {
         notificaObservadores();
     }
 
-    private void contaPalavras(String s){
+    private void firstSplit(String s){
+        this.palavras = s.split("\\s+");
+    }
 
-        String[] palavras = s.split("\\s+");
+    private void contaPalavras(){
         qtdPalavras = palavras.length;
     }
 
-    private void contaPalavrasCharPar(String s){
+    private void contaPalavrasCharPar(){
         int cont = 0;
-        String[] palavras = s.split("\\s+");
-        for(int i=0; i < palavras.length; i++){
-            if(palavras[i].length()%2 == 0)
-            {
+        for(String palavra : palavras){
+            if(palavra.length()%2 == 0){
                 cont++;
             }
         }
         qtdPalavrasPares = cont;
     }
 
-    private void contaPalavrasMaiusculas(String s){
+    private void contaPalavrasMaiusculas(){
         int cont = 0;
-        String[] palavras = s.split("\\s+");
-        for(int i=0; i < palavras.length; i++){
-            char t = palavras[i].charAt(0);
-            if(Character.isUpperCase(t))
-            {
+        for(String palavra : palavras){
+            if(Character.isUpperCase(palavra.charAt(0))) {
                 cont++;
             }
-            qtdPalavrasMaiusculas = cont;
         }
+        qtdPalavrasMaiusculas = cont;
     }
 
     public void setClientes(List<Observador> clientes) {
@@ -90,35 +89,16 @@ public class Observavel implements iObservavel {
         return clientes;
     }
 
-    public String getFrase() {
-        return frase;
-    }
-
-    public void setFrase(String frase) {
-        this.frase = frase;
-    }
-
     public int getQtdPalavras() {
         return qtdPalavras;
-    }
-
-    public void setQtdPalavras(int qtdPalavras) {
-        this.qtdPalavras = qtdPalavras;
     }
 
     public int getQtdPalavrasPares() {
         return qtdPalavrasPares;
     }
 
-    public void setQtdPalavrasPares(int qtdPalavrasPares) {
-        this.qtdPalavrasPares = qtdPalavrasPares;
-    }
-
     public int getQtdPalavrasMaiusculas() {
         return qtdPalavrasMaiusculas;
     }
 
-    public void setQtdPalavrasMaiusculas(int qtdPalavrasMaiusculas) {
-        this.qtdPalavrasMaiusculas = qtdPalavrasMaiusculas;
-    }
 }

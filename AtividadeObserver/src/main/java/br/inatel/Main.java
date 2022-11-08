@@ -23,13 +23,5 @@ public class Main {
 
 
 
-//        String frase = "hoje ta muito frio";
-//
-//        System.out.println(frase);
-//
-//        String[] nova = frase.split(" ");
-//
-//        System.out.println(nova.length);
-
     }
 }
